@@ -11,7 +11,7 @@ import { GithubService } from './github.service';
 // import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { DocumentComponent } from './document/document.component';
-
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,10 @@ import { DocumentComponent } from './document/document.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [GithubService],
+  providers: [
+    GithubService,
+    { provide: 'API_URL', useValue: environment.apiUrl }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
