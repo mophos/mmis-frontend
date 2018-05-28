@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>โปรแกรมบริหารจัดการคลังยาและเวชภัณฑ์ MMIS</h2>
+  <div class="card" *ngFor="let r of releases">
+    <div class="card-header">
+      {{r.tag_name}} {{r.latest ? '(เวอร์ชั่นล่าสุด)' : ''}},
+      <span style="font-size: 10pt">{{r.published_at}}</span>
+    </div>
+    <div class="card-block">
+      <!-- <div class="card-title">
+            Block
+          </div> -->
+      <div class="card-text">
+        <ngx-md>
+          {{r.body}}
+        </ngx-md>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="card">
+        <div class="card-header">
+          โปรแกรมบริหารจัดการคลังยาและเวชภัณฑ์ MMIS
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <div class="card" *ngFor="let r of releases">
+              <div class="card-header">
+                {{r.name}} [{{r.tag_name}}] {{r.latest ? 'เวอร์ชั่นล่าสุด' : ''}}
+              </div>
+              <div class="card-block">
+                <div class="card-title">
+                  Block
+                </div>
+                <div class="card-text">
+                  <ngx-md>
+                    {{r.body}}
+                  </ngx-md>
+
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <!-- <div class="card-footer">
+                <button class="btn btn-sm btn-link">Footer Action 1</button>
+                <button class="btn btn-sm btn-link">Footer Action 2</button>
+              </div>
+            </div> -->
+</div>
