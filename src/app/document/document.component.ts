@@ -49,4 +49,9 @@ export class DocumentComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  downloadSQLBlank() {
+    const url = `${this.apiUrl}/sql/mmis_blank.sql`;
+    window.open(url, '_blank');
+  }
+
 }
