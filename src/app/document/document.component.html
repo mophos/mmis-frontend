@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" style="padding-bottom: 50px;">
   <h2>โปรแกรมบริหารจัดการคลังยาและเวชภัณฑ์ MMIS</h2>
   <div class="card">
     <div class="card-header">
-      <clr-icon shape="shopping-cart"></clr-icon>
+      <clr-icon shape="book"></clr-icon>
       คู่มือ
     </div>
     <div class="card-block">
@@ -22,12 +22,17 @@
             <clr-icon shape="printer"></clr-icon> พิมพ์
           </button>
         </li>
+        <li>คู่มือการลงโปรแกรม MMIS (docker)
+          <button style="float: right;" (click)="downloadDockerInstall()" class="btn btn-sm btn-link">
+            <clr-icon shape="printer"></clr-icon> พิมพ์
+          </button>
+        </li>
       </ul>
     </div>
   </div>
   <div class="card">
     <div class="card-header">
-      <clr-icon shape="shopping-cart"></clr-icon>
+      <clr-icon shape="data-cluster"></clr-icon>
       Database for MMIS
     </div>
     <div class="card-block">
@@ -52,8 +57,8 @@
   </div>
   <div class="card">
     <div class="card-header">
-      <clr-icon shape="shopping-cart"></clr-icon>
-      Template นำเข้าข้อมูล
+      <clr-icon shape="note"></clr-icon>
+      Template
     </div>
     <div class="card-block">
       <ul class="list">
@@ -67,12 +72,22 @@
             <clr-icon shape="download"></clr-icon> ดาวน์โหลด
           </button>
         </li>
+        <li>Template ไฟล์ Excel สำหรับใช้ตัดจ่าย คลังใหญ่
+          <button style="float: right;" (click)="downloadIssueAdmin()" class="btn btn-sm btn-link">
+            <clr-icon shape="download"></clr-icon> ดาวน์โหลด
+          </button>
+        </li>
+        <li>Template ไฟล์ Excel สำหรับใช้ตัดจ่ายจาก HIS
+          <button style="float: right;" (click)="downloadIssueHis()" class="btn btn-sm btn-link">
+            <clr-icon shape="download"></clr-icon> ดาวน์โหลด
+          </button>
+        </li>
       </ul>
     </div>
   </div>
   <div class="card">
     <div class="card-header">
-      <clr-icon shape="shopping-cart"></clr-icon>
+      <clr-icon shape="sync"></clr-icon>
       โปรแกรมแปลงข้อมูลเข้าระบบ MMIS จาก INVS INVC INVDOS EXCEL
     </div>
     <div class="card-block">
@@ -86,6 +101,47 @@
           <button style="float: right;" (click)="downloadMigrateMac()" class="btn btn-sm btn-link">
             <clr-icon shape="download"></clr-icon> ดาวน์โหลด
           </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <clr-icon shape="hard-disk"></clr-icon>
+      โปรแกรมที่เกี่ยวข้อง
+    </div>
+    <div class="card-block">
+      <ul class="list">
+        <li>โปรแกรม Navicat (โปรแกรมจัดการฐานข้อมูล)
+          <button style="float: right;" (click)="downloadNavicat()" class="btn btn-sm btn-link">
+            <clr-icon shape="download"></clr-icon> ดาวน์โหลด
+          </button>
+        </li>
+        <li>โปรแกรม Team Viewer Version 13 (ใช้สำหรับขอรับการสนับสนุนระยะไกล)
+          <button style="float: right;" (click)="downloadTeamViewer()" class="btn btn-sm btn-link">
+            <clr-icon shape="download"></clr-icon> ดาวน์โหลด
+          </button>
+        </li>
+        <li>ระบบปฏิบัติการ CentOS 7 (Server)
+          <button style="float: right;" (click)="downloadCentOS7()" class="btn btn-sm btn-link">
+            <clr-icon shape="download"></clr-icon> ดาวน์โหลด
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <clr-icon shape="computer"></clr-icon>
+      ความต้องการของระบบ
+    </div>
+    <div class="card-block">
+      <ul class="list">
+        <li>
+          Windows 7, Windows 8, Windows 10, OSX 10.9 ขึ้นไป
+        </li>
+        <li>
+          Google Chrome เวอร์ชั่น 50 ขึ้นไป
         </li>
       </ul>
     </div>
