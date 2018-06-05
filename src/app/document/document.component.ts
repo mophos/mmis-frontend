@@ -79,6 +79,16 @@ export class DocumentComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  downloadDockerComposeInstall() {
+    const url = `${this.apiUrl}/pdf/dockerComposeInstall.pdf`;
+    window.open(url, '_blank');
+  }
+
+  downloadLastInstallCentOS() {
+    const url = `${this.apiUrl}/pdf/lastInstallCentOS.pdf`;
+    window.open(url, '_blank');
+  }
+
   downloadNavicat() {
     const url = `https://www.navicat.com/en/download/navicat-for-mysql`;
     window.open(url, '_blank');
