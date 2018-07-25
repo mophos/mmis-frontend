@@ -45,7 +45,7 @@ export class DocumentComponent implements OnInit {
   }
 
   downloadManualMigrateDosToMMIS() {
-    const url = `${this.apiUrl}/pdf/invDosToMMIS.pdf`;
+    const url = `${this.apiUrl}/pdf/InvDosToMMIS.pdf`;
     window.open(url, '_blank');
   }
 
