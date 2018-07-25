@@ -39,6 +39,16 @@ export class DocumentComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  downloadManualIssueHosxp() {
+    const url = `${this.apiUrl}/pdf/issueHosXP.pdf`;
+    window.open(url, '_blank');
+  }
+
+  downloadManualMigrateDosToMMIS() {
+    const url = `${this.apiUrl}/pdf/invDosToMMIS.pdf`;
+    window.open(url, '_blank');
+  }
+
   downloadMigrateWin() {
     const url = `${this.apiUrl}/program/MirgrateWindows.zip`;
     window.open(url, '_blank');

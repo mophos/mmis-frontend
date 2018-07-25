@@ -22,6 +22,16 @@
             <clr-icon shape="printer"></clr-icon> พิมพ์
           </button>
         </li>
+        <li>คู่มือการใช้งานการตัดจ่ายจาก HosXP
+          <button style="float: right;" (click)="downloadManualIssueHosxp()" class="btn btn-sm btn-link">
+            <clr-icon shape="printer"></clr-icon> พิมพ์
+          </button>
+        </li>
+        <li>คู่มือการใช้งานโปรแกรม Migrate จาก INVdos เพื่อนำเข้าฐานข้อมูล MMIS
+          <button style="float: right;" (click)="downloadManualMigrateDosToMMIS()" class="btn btn-sm btn-link">
+            <clr-icon shape="printer"></clr-icon> พิมพ์
+          </button>
+        </li>
         <li>คู่มือการลงโปรแกรม MMIS (Docker)
           <button style="float: right;" (click)="downloadDockerInstall()" class="btn btn-sm btn-link">
             <clr-icon shape="printer"></clr-icon> พิมพ์
@@ -98,7 +108,7 @@
   <div class="card">
     <div class="card-header">
       <clr-icon shape="sync"></clr-icon>
-      โปรแกรมแปลงข้อมูลเข้าระบบ MMIS จาก INVS INVC INVDOS EXCEL
+      โปรแกรมแปลงข้อมูลเข้าระบบ MMIS จาก INVS INVC INVdos EXCEL
     </div>
     <div class="card-block">
       <ul class="list">
