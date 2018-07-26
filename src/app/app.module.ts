@@ -12,12 +12,14 @@ import { GithubService } from './github.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DocumentComponent } from './document/document.component';
 import { environment } from '../environments/environment';
+import { DemoComponent } from './demo/demo.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LayoutComponent,
-    DocumentComponent
+    DocumentComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,

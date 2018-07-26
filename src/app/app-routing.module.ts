@@ -1,3 +1,4 @@
+import { DemoComponent } from './demo/demo.component';
 import { DocumentComponent } from './document/document.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -12,9 +13,10 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, pathMatch: 'full' },
       { path: 'document', component: DocumentComponent, pathMatch: 'full' },
+      { path: 'demo', component: DemoComponent, pathMatch: 'full' },
     ]
   }
 ];
