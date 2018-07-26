@@ -13,7 +13,7 @@ export class DemoComponent implements OnInit {
   }
 
   gotoDemo() {
-    const url = `http://www.google.co.th`;
+    const url = `mmis.moph.go.th:8080`;
     window.open(url, '_blank');
   }
 }
