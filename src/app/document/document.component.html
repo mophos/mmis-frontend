@@ -57,8 +57,13 @@
     </div>
     <div class="card-block">
       <ul class="list">
-        <li>ฐานข้อมูลเปล่า สำหรับ Migrate และเริ่มระบบใหม่แบบไม่มีข้อมูล
+        <li>ฐานข้อมูลเปล่า สำหรับ Migrate และเริ่มระบบใหม่แบบไม่มีข้อมูล (username : admin , password : 123456)
           <button style="float: right;" (click)="downloadSQLBlank()" class="btn btn-sm btn-link">
+            <clr-icon shape="download"></clr-icon> ดาวน์โหลด
+          </button>
+        </li>
+        <li>ฐานข้อมูลทดสอบ มีข้อมูลเบื้องต้น (username : admin , password : 123456)
+          <button style="float: right;" (click)="downloadSQLDemo()" class="btn btn-sm btn-link">
             <clr-icon shape="download"></clr-icon> ดาวน์โหลด
           </button>
         </li>

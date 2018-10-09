@@ -20,7 +20,7 @@ services:
     volumes:
       - ./mysql-data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: "##Mmis@mmis”
+      MYSQL_ROOT_PASSWORD: "##Mmis@mmis"
       MYSQL_ROOT_HOST: "%"
     command: |
       --bind-address=0.0.0.0

@@ -64,6 +64,11 @@ export class DocumentComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  downloadSQLDemo() {
+    const url = `${this.apiUrl}/sql/mmis_demo.sql`;
+    window.open(url, '_blank');
+  }
+
   downloadIssueHis() {
     const url = `${this.apiUrl}/template/issueHis.xls`;
     window.open(url, '_blank');
