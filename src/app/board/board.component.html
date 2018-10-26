@@ -1,0 +1,46 @@
+<div class="alert alert-danger">
+  <div class="alert-items">
+    <div class="alert-item static">
+      <div class="alert-icon-wrapper">
+        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+      </div>
+      <span class="alert-text">
+        หน้าเว็บบอร์ดอยู่ในเวอร์ชั่นทดลอง หากพบเห็นข้อผิดพลาดกรุณาติดต่อ naphattharawat@gmail.com
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom: 50px;">
+  <h2>โปรแกรมบริหารจัดการคลังยาและเวชภัณฑ์ MMIS</h2>
+  <div class="card">
+    <div class="card-header">
+      <clr-icon shape="book"></clr-icon>
+      บอร์ด
+    </div>
+    <div class="card-block">
+      <div class="card-title">
+        <div class="row">
+          <div class="col-md-10">
+            หัวข้อหลัก
+          </div>
+          <div class="col-md-2">
+            ใช้งานล่าสุด
+          </div>
+        </div>
+      </div>
+      <div class="card-text" *ngFor="let i of boards">
+        <div class="row">
+          <div class="col-md-10">
+            <a [routerLink]="['/board/topic']" [queryParams]="{boardId: i.board_id}">
+              {{i.board_name}}
+            </a>
+          </div>
+          <div class="col-md-2">
+            {{i.datetime | dateToThai}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

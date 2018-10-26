@@ -1,3 +1,6 @@
+import { BoardTopicComponent } from './board-topic/board-topic.component';
+import { BoardTopicDetailComponent } from './board-topic-detail/board-topic-detail.component';
+import { BoardComponent } from './board/board.component';
 import { DemoComponent } from './demo/demo.component';
 import { DocumentComponent } from './document/document.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +20,9 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent, pathMatch: 'full' },
       { path: 'document', component: DocumentComponent, pathMatch: 'full' },
       { path: 'demo', component: DemoComponent, pathMatch: 'full' },
+      { path: 'board', component: BoardComponent, pathMatch: 'full' },
+      { path: 'board/topic', component: BoardTopicComponent, pathMatch: 'full' },
+      { path: 'board/topic/detail', component: BoardTopicDetailComponent, pathMatch: 'full' },
     ]
   }
 ];

@@ -41,7 +41,5 @@ export class HomeComponent implements OnInit {
       r.published_at = moment(r.published_at).format('D MMMM ') + (moment(r.published_at).get('year') + 543);
     });
     this.releases = rs;
-    console.log(this.releases[0].name);
-    console.log(this.releases);
   }
 }

@@ -1,0 +1,156 @@
+<div class="container" style="padding-bottom: 50px;">
+  <h2>โปรแกรมบริหารจัดการคลังยาและเวชภัณฑ์ MMIS</h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-9">
+          <clr-icon shape="book"></clr-icon>
+          <a [routerLink]="['/board']">บอร์ด</a> / {{boardName}}
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-success-outline" (click)="addTopic()">
+            <clr-icon shape="plus"></clr-icon>
+            ตั้งกระทู้
+          </button>
+          <button class="btn btn-success" *ngIf="type == 'guest'" (click)="openLogin()">
+            เข้าสู่ระบบ
+          </button>
+          <button class="btn btn-success" *ngIf="type != 'guest'" (click)="logout()">
+            ออกจากระบบ
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <div class="card-title">
+        <div class="row">
+          <div class="col-md-10">
+            หัวข้อ
+          </div>
+          <div class="col-md-2">
+            ใช้งานล่าสุด
+          </div>
+        </div>
+      </div>
+      <div class="card-text" *ngFor="let i of topics">
+        <div class="row">
+          <div class="col-md-10">
+            <a [routerLink]="['/board/topic/detail']" [queryParams]="{topicId: i.board_topic_id}">
+              {{i.board_topic_name}}
+            </a>
+          </div>
+          <div class="col-md-2">
+            {{i.datetime | dateToThai}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="modalAddTopicUser" [clrModalSize]="'lg'">
+  <h3 class="modal-title">ตั้งกระทู้</h3>
+  <div class="modal-body">
+    <form class="form-block" style="padding: 20px;">
+      <div class="row form-group">
+        <div class="col-md-4">หัวข้อ</div>
+        <div class="col-md-8"><input type="text" class="form-control" name="header" [(ngModel)]="header"></div>
+        <div class="col-md-4">รายละเอียด</div>
+        <div class="col-md-8">
+          <!-- <input type="text" class="form-control"> -->
+          <textarea class="form-control" name="detail" [(ngModel)]="detail"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="saveWithUser()">บันทึก</button>
+    <button type="button" class="btn btn-danger" (click)="modalAddTopicUser = false">ยกเลิก</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="modalAddTopicGuest" [clrModalSize]="'lg'">
+  <h3 class="modal-title">ตั้งกระทู้</h3>
+  <div class="modal-body">
+    <table style="width:100%">
+      <tr>
+        <td style="width: 50%;border-right:1px solid black;height:auto">
+          <form class="form-block" style="padding-right: 20px;">
+            <div class="row form-group">
+              <div class="col-md-4">Username</div>
+              <div class="col-md-8">
+                <input type="text" name="username" [(ngModel)]="username" (keyup)="enterLogin($event)" class="form-control">
+              </div>
+              <div class="col-md-4">Password</div>
+              <div class="col-md-8">
+                <input type="password" name="password" [(ngModel)]="password" (keyup)="enterLogin($event)" class="form-control">
+              </div>
+              <div class="col-md-6" style="text-align: right">
+                <button type="button" class="btn btn-success" (click)="login()">เข้าสู่ระบบ</button>
+              </div>
+              <div class="col-md-6" style="text-align: left">
+                <a href='https://ictportal.moph.go.th/register' target='_blank'>
+                  <button type="button" class="btn btn-primary">สมัครสมาชิก</button>
+                </a>
+              </div>
+            </div>
+          </form>
+        </td>
+        <td style="width:50%;">
+          <form class="form-block" style="padding: 20px;">
+            <div class="row form-group">
+              <div class="col-md-4">หัวข้อ</div>
+              <div class="col-md-8"><input type="text" class="form-control" name="header" [(ngModel)]="header"></div>
+              <div class="col-md-4">รายละเอียด</div>
+              <div class="col-md-8">
+                <textarea class="form-control" name="detail" [(ngModel)]="detail"></textarea>
+              </div>
+              <div class="col-md-4">ชื่อ</div>
+              <div class="col-md-8"><input type="text" class="form-control" [(ngModel)]="fname" name="fname"></div>
+              <div class="col-md-4">นามสกุล</div>
+              <div class="col-md-8"><input type="text" class="form-control" [(ngModel)]="lname" name="lname"></div>
+              <div class="col-md-4">อีเมล</div>
+              <div class="col-md-8"><input type="text" class="form-control" [(ngModel)]="email" name="email"></div>
+              <div class="col-md-4">รหัสสถานพยาบาล</div>
+              <div class="col-md-8"><input type="text" class="form-control" [(ngModel)]="hospcode" name="hospcode"></div>
+            </div>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center">เข้าสู่ระบบเพื่อรับแจ้งเตือน หรือ ตั้งกระทู้</td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="saveWithGuest()">บันทึก</button>
+    <button type="button" class="btn btn-danger" (click)="modalAddTopicGuest = false">ยกเลิก</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="modalLogin" [clrModalSize]="'lg'">
+  <h3 class="modal-title">เข้าสู่ระบบ</h3>
+  <div class="modal-body">
+    <form class="form-block" style="padding-right: 20px;">
+      <div class="row form-group">
+        <div class="col-md-4">Username</div>
+        <div class="col-md-8">
+          <input type="text" name="usernameLoginOnly" [(ngModel)]="usernameLoginOnly" (keyup)="enterLoginOnly($event)"
+            class="form-control">
+        </div>
+        <div class="col-md-4">Password</div>
+        <div class="col-md-8">
+          <input type="password" name="passwordLoginOnly" [(ngModel)]="passwordLoginOnly" (keyup)="enterLoginOnly($event)"
+            class="form-control">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="loginOnly()">เข้าสู่ระบบ</button>
+    <a href='https://ictportal.moph.go.th/register' target='_blank'>
+      <button type="button" class="btn btn-primary">สมัครสมาชิก</button>
+    </a>
+    <button type="button" class="btn btn-danger" (click)="modalLogin = false">ยกเลิก</button>
+  </div>
+</clr-modal>

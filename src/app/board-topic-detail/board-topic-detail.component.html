@@ -1,0 +1,149 @@
+<div class="container" style="padding-bottom: 50px;">
+  <h2>โปรแกรมบริหารจัดการคลังยาและเวชภัณฑ์ MMIS</h2>
+
+  <div class="card bgUser">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-10">
+          <clr-icon shape="book"></clr-icon>
+          หัวข้อ {{topics.board_topic_name}}
+          <p style="margin-top: 0px">
+            <a [routerLink]="['/board']">บอร์ด</a> /
+            <a [routerLink]="['/board/topic']" [queryParams]="{boardId: topics.board_id}">{{topics.board_name}}</a>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-success" *ngIf="type == 'guest'" (click)="openLogin()">
+            เข้าสู่ระบบ
+          </button>
+          <button class="btn btn-success" *ngIf="type != 'guest'" (click)="logout()">
+            ออกจากระบบ
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-block">
+      <div class="card-title">
+        <div class="row">
+          <div class="col-md-9">
+            {{topics.board_topic_detail}}
+          </div>
+          <div class="col-md-3">
+            {{topics.fname}} {{topics.lname}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let i of details">
+    <div class="col-md-2" *ngIf="i.type == 'admin'"></div>
+    <div class="col-md-10">
+      <div class="card" [ngClass]="{bgAdmin: i.type=='admin',bgUser:i.type =='user',hide:i.is_delete =='Y'}">
+        <!-- <div class="card-header"></div> -->
+        <div class="card-block">
+          <div class="card-text">
+            <div class="row">
+              <div class="col-md-9">
+                <ngx-md>
+                  {{i.detail}}
+                </ngx-md>
+              </div>
+              <div class="col-md-3" style="text-align: right">
+                {{i.fname}} {{i.lname}} <clr-icon shape="trash" (click)="hideComment(i.board_topic_detail_id)" *ngIf="type == 'admin'"></clr-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-2" *ngIf="i.type == 'user'"></div>
+
+  </div>
+
+  <div class="card bgUser" *ngIf="type != 'guest'">
+    <div class="card-block">
+      <div class="card-title">
+        <div class="row">
+          <div class="col-md-2">แสดงความคิดเห็น</div>
+          <div class="col-md-10">
+            <textarea class="form-control" name="comment" [(ngModel)]="comment"></textarea>
+          </div>
+          <div class="col-md-3 push-md-5">
+            <button class="btn btn-primary-outline" [disabled]="isSave || !comment" (click)="saveWithUser()">ส่ง</button>
+            <button class="btn btn-danger-outline" (click)="reset()">ล้าง</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bgUser" *ngIf="type == 'guest'">
+    <div class="card-block">
+      <div class="card-title">
+        <form class="form-block">
+          <div class="row form-group">
+            <div class="col-md-2">แสดงความคิดเห็น</div>
+            <div class="col-md-10">
+              <textarea class="form-control" name="comment" [(ngModel)]="comment"></textarea>
+            </div>
+            <div class="col-md-2">ชื่อ</div>
+            <div class="col-md-10"><input type="text" class="form-control" [(ngModel)]="fname" name="fname" placeholder="ชื่อ"></div>
+            <div class="col-md-2">นามสกุล</div>
+            <div class="col-md-10"><input type="text" class="form-control" [(ngModel)]="lname" name="lname" placeholder="นามสกุล"></div>
+            <div class="col-md-2">อีเมล</div>
+            <div class="col-md-10"><input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="อีเมล"></div>
+            <div class="col-md-2">รหัสสถานพยาบาล</div>
+            <div class="col-md-10"><input type="text" class="form-control" [(ngModel)]="hospcode" name="hospcode"
+                placeholder="รหัสสถานพยาบาล"></div>
+            <div class="col-md-3 push-md-5">
+              <button class="btn btn-primary" [disabled]="isSave || !comment || !fname || !lname || !email || !hospcode"
+                (click)="saveWithGuest()">ส่ง</button>
+              <button class="btn btn-danger-outline" (click)="reset()">ล้าง</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<clr-modal [(clrModalOpen)]="modalLogin" [clrModalSize]="'lg'">
+  <h3 class="modal-title">เข้าสู่ระบบ</h3>
+  <div class="modal-body">
+    <form class="form-block" style="padding-right: 20px;">
+      <div class="row form-group">
+        <div class="col-md-4">Username</div>
+        <div class="col-md-8">
+          <input type="text" name="username" [(ngModel)]="username" (keyup)="enterLogin($event)" class="form-control">
+        </div>
+        <div class="col-md-4">Password</div>
+        <div class="col-md-8">
+          <input type="password" name="password" [(ngModel)]="password" (keyup)="enterLogin($event)" class="form-control">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="isSave || !username || !password" (click)="login()">เข้าสู่ระบบ</button>
+    <a href='https://ictportal.moph.go.th/register' target='_blank'>
+      <button type="button" class="btn btn-primary">สมัครสมาชิก</button>
+    </a>
+    <button type="button" class="btn btn-danger" (click)="modalLogin = false">ยกเลิก</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="loadding" [clrModalClosable]="false">
+  <h3 class="modal-title">ประมวลผล</h3>
+  <div class="modal-body">
+    <span class="spinner spinner-inline">
+      ระบบกำลังประมวลผลกรุณารอซักครู่...
+    </span>
+    <span>
+      ระบบกำลังประมวลผลกรุณารอซักครู่...
+    </span>
+  </div>
+</clr-modal>

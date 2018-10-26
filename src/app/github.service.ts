@@ -12,6 +12,5 @@ export class GithubService {
     const url = `https://api.github.com/repos/mophos/mmis-docker-build/releases`;
     const resp = await this.http.get(`${url}`).toPromise();
     return resp;
-    // return true;
   }
 }

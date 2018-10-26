@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/api/mmis',
+  apiUrl: 'http://api.mmis.mophos.me',
 };
