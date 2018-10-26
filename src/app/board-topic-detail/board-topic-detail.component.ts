@@ -14,7 +14,7 @@ export class BoardTopicDetailComponent implements OnInit {
 
   topicId: any;
   details = [];
-  topics = {};
+  topics: any = {};
   topicName: any;
   topicDetail: any;
   comment: any;
